@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/pykaso/sources/kontomatik-ios/KontomatikExamaple/KontomatikExample.xcodeproj">
+      location = "group:kontomatikExample/KontomatikExample.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:kontomatik.xcodeproj">

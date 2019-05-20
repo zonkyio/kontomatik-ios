@@ -12,6 +12,7 @@
 		1905A2602292D0F6005F8FBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1905A25E2292D0F6005F8FBD /* LaunchScreen.storyboard */; };
 		1905A2692292D126005F8FBD /* kontomatik.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1905A2682292D126005F8FBD /* kontomatik.framework */; };
 		1905A2742292DC66005F8FBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1905A2732292DC66005F8FBD /* AppDelegate.swift */; };
+		1905A27A2292E7CD005F8FBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1905A2792292E7CD005F8FBD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,9 +20,10 @@
 		1905A2572292D0F5005F8FBD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1905A25A2292D0F5005F8FBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1905A25F2292D0F6005F8FBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1905A2612292D0F6005F8FBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1905A2682292D126005F8FBD /* kontomatik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = kontomatik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1905A2732292DC66005F8FBD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1905A2772292E691005F8FBD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1905A2792292E7CD005F8FBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +41,7 @@
 		1905A2492292D0F5005F8FBD = {
 			isa = PBXGroup;
 			children = (
-				1905A2542292D0F5005F8FBD /* KontomatikExamaple */,
+				1905A2542292D0F5005F8FBD /* KontomatikExample */,
 				1905A2532292D0F5005F8FBD /* Products */,
 				1905A2672292D126005F8FBD /* Frameworks */,
 			);
@@ -53,16 +55,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1905A2542292D0F5005F8FBD /* KontomatikExamaple */ = {
+		1905A2542292D0F5005F8FBD /* KontomatikExample */ = {
 			isa = PBXGroup;
 			children = (
+				1905A2792292E7CD005F8FBD /* Assets.xcassets */,
+				1905A2772292E691005F8FBD /* Info.plist */,
 				1905A2732292DC66005F8FBD /* AppDelegate.swift */,
 				1905A2572292D0F5005F8FBD /* ViewController.swift */,
 				1905A2592292D0F5005F8FBD /* Main.storyboard */,
 				1905A25E2292D0F6005F8FBD /* LaunchScreen.storyboard */,
-				1905A2612292D0F6005F8FBD /* Info.plist */,
 			);
-			path = KontomatikExamaple;
+			path = KontomatikExample;
 			sourceTree = "<group>";
 		};
 		1905A2672292D126005F8FBD /* Frameworks */ = {
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1905A2602292D0F6005F8FBD /* LaunchScreen.storyboard in Resources */,
+				1905A27A2292E7CD005F8FBD /* Assets.xcassets in Resources */,
 				1905A25B2292D0F5005F8FBD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +300,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = KontomatikExamaple/Info.plist;
+				INFOPLIST_FILE = KontomatikExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,7 +322,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = KontomatikExamaple/Info.plist;
+				INFOPLIST_FILE = KontomatikExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
