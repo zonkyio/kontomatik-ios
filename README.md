@@ -7,11 +7,8 @@ The missing iOS SDK for Kontomatik written in Swift.  Compatible with Swift 5.
 
 Install with `Carthage`. Add this line to .Cartfile
     
-    $ Kontomatik-iOS
-    
-Install with `Cocoapods`. Add this line to .Podfile
-    
-    $ Kontomatik-iOS
+    github "zonkyio/kontomatik-ios" ~> 1.0
+
 
 ## Setting it up
 
