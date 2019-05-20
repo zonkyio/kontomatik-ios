@@ -14,8 +14,8 @@ final class ViewController: UIViewController {
     private weak var kontomatikView: KontomatikSignInView!
     
     // These properties are given by Kontomatik company
-    private let kontomatikClientID =  "zonky-test"
-    private let kontomatikClientIdentity = "Zonky s.r.o"
+    private let kontomatikClientID =  "xxxxxx"
+    private let kontomatikClientIdentity = "xxxxxx"
     
     // pre-selected bank
     private let bank = KontomatikBank.AirBank.rawValue
