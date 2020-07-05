@@ -50,6 +50,8 @@ public struct KontomatikSignInStyle {
     let menuHighlightBgColor: UIColor?
     /// Controls the all texts color
     let textColor: UIColor?
+    /// Undocumented option. Hides the widget border
+    let isPopup: Bool?
     
     public func toDict() -> [String: Any] {
         var params: [String: Any] = [:]
@@ -72,13 +74,14 @@ public struct KontomatikSignInStyle {
         inputBorderFocusColor.map { params["inputBorderFocusColor"] = $0.hexValue()  }
         menuHighlightBgColor.map { params["menuHighlightBgColor"] = $0.hexValue()  }
         textColor.map { params["textColor"] = $0.hexValue()  }
+        isPopup.map { params["isPopup"] = $0 }
         return params
     }
 }
 
 extension KontomatikSignInStyle {
     
-    public init(alertErrorBgColor: UIColor?, alertErrorBorderColor: UIColor?, alertErrorTextColor: UIColor?, bodyBgColor: UIColor?, borderRadius: Int?, btnBgColor: UIColor?, btnBorderColor: UIColor?, btnTextColor: UIColor?, btnPrimaryBgColor: UIColor?, btnPrimaryBorderColor: UIColor?, btnPrimaryTextColor: UIColor?, inputBgColor: UIColor?, inputBorderColor: UIColor?, inputTextColor: UIColor?, inputDisabledTextColor: UIColor?, inputBorderFocusColor: UIColor?, menuHighlightBgColor: UIColor?) {
+    public init(alertErrorBgColor: UIColor?, alertErrorBorderColor: UIColor?, alertErrorTextColor: UIColor?, bodyBgColor: UIColor?, borderRadius: Int?, btnBgColor: UIColor?, btnBorderColor: UIColor?, btnTextColor: UIColor?, btnPrimaryBgColor: UIColor?, btnPrimaryBorderColor: UIColor?, btnPrimaryTextColor: UIColor?, inputBgColor: UIColor?, inputBorderColor: UIColor?, inputTextColor: UIColor?, inputDisabledTextColor: UIColor?, inputBorderFocusColor: UIColor?, menuHighlightBgColor: UIColor?, isPopup: Bool?) {
         self.alertErrorBgColor = alertErrorBgColor
         self.alertErrorBorderColor = alertErrorBorderColor
         self.alertErrorTextColor = alertErrorTextColor
@@ -97,7 +100,7 @@ extension KontomatikSignInStyle {
         self.inputBorderFocusColor = inputBorderFocusColor
         self.menuHighlightBgColor = menuHighlightBgColor
         self.textColor = nil
-        
+        self.isPopup = isPopup
     }
 }
 
