@@ -96,7 +96,7 @@ public class KontomatikSignInView: UIView, WKNavigationDelegate, WKScriptMessage
     }
     
     public func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        delegate.onError(in: self, error: error)
+        delegate?.onError(in: self, error: error)
         
     }
     
