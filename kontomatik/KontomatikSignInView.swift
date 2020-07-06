@@ -123,7 +123,7 @@ public class KontomatikSignInView: UIView, WKNavigationDelegate, WKScriptMessage
                 delegate?.signInCompleted(in: self, target: message[1], sessionId: message[2], sessionIdSignature: message[3])
             } else {
                 let error  = NSError(domain:"kontomatik.unknown", code:0, userInfo:[ NSLocalizedDescriptionKey: messageBody])
-                delegate.onError(in: self, error: error)
+                delegate?.onError(in: self, error: error)
             }
         }
     }
