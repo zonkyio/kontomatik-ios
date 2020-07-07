@@ -65,6 +65,8 @@ public struct KontomatikSignInConfiguration {
     let ownerExternalId: String?
     /// The widget displays a bank with a large market share as the default value of the bank selection list. If instead of a default target you prefer to display the message Select from list, set showDefaultTarget to false.
     let showDefaultTarget: Bool?
+    /// Undocumented option. Hides the widget border
+    let isPopup: Bool?
     
     public func toDict() -> [String: Any] {
         var params: [String: Any] = [
@@ -81,19 +83,20 @@ public struct KontomatikSignInConfiguration {
         dynamicHeight.map { params["dynamicHeight"] = $0 }
         target.map { params["target"] = $0 }
         styles.map { params["styles"] = $0.toDict() }
-        
+        isPopup.map { params["isPopup"] = $0 }
         return params
     }
 }
 
 extension KontomatikSignInConfiguration {
-    public init(client: String, clientIdentity: String, country: Country, locale: Locale, style: KontomatikSignInStyle?, target: String?) {
+    public init(client: String, clientIdentity: String, country: Country, locale: Locale, style: KontomatikSignInStyle?, target: String?, isPopup: Bool = false) {
         self.client = client
         self.clientIdentity = clientIdentity
         self.country = country
         self.locale = locale
         self.target = target
         self.styles = style
+        self.isPopup = isPopup
         
         showTargetMissingOption = false
         showBetaQualityLabels = false

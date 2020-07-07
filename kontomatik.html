@@ -1,101 +1,114 @@
 <html>
-    <head>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
-            <script src="https://signin.kontomatik.com/assets/signin-widget.js"></script>
-            <script type="text/javascript">
-                function errorHandler(message) {
-                    if (window.webkit !== undefined) {
-                        window.webkit.messageHandlers.error.postMessage(message);
-                    }
+<head>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+        <script src="https://signin.kontomatik.com/assets/signin-widget.js"></script>
+        <script type="text/javascript">
+            function errorHandler(message) {
+                if (window.webkit !== undefined) {
+                    window.webkit.messageHandlers.error.postMessage(message);
                 }
-
-                function okHandler(message) {
-                    if (window.webkit !== undefined) {
-                        window.webkit.messageHandlers.success.postMessage(message);
-                    }
-                }
-
-            window.onerror = function (msg, url, lineNo, columnNo, error) {
-                errorHandler(msg);
             }
-                
-            var allowedParameters = ["client", "clientIdentity", "country", "locale", "showTargetMissingOption", "showBetaQualityLabels", "showFavicons", "showScreenshots", "layout", "dynamicHeight", "target", "ownerExternalId", "showDefaultTarget", "styles"];
+
+            function okHandler(message) {
+                if (window.webkit !== undefined) {
+                    window.webkit.messageHandlers.success.postMessage(message);
+                }
+            }
+
+        window.onerror = function (msg, url, lineNo, columnNo, error) {
+            errorHandler(msg);
+        }
+
+        var isPopup = false;
+        var isPopupPatched = false;
             
-            var parameters = {
-                client: '',
-                clientIdentity: null,
-                country: null,
-                locale: 'en',
-                showTargetMissingOption: true,
-                showBetaQualityLabels: false,
-                showFavicons: false,
-                showScreenshots: true,
-                layout: true,
-                dynamicHeight: true,
-                target: null,
-                ownerExternalId: null,
-                styles: null,
-                divId: 'kontomatik',
-                onSuccess: function(target, sessionId, sessionIdSignature, options) {
-                    var message = "success," + target + "," + sessionId + "," + sessionIdSignature
-                    okHandler(message);
-                },
-                onError: function(exception, options) {
-                    errorHandler(exception+"");
-                },
-                onUnsupportedTarget: function(target, country,  address) {
-                    errorHandler("unsupportedTarget,"+target+","+country+","+address);
-                },
-                onInitialized: function() {
-                    var iframe = document.getElementsByTagName('iframe')[0];
+        var allowedParameters = ["client", "clientIdentity", "country", "locale", "showTargetMissingOption", "showBetaQualityLabels", "showFavicons", "showScreenshots", "layout", "dynamicHeight", "target", "ownerExternalId", "showDefaultTarget", "styles"];
+        
+        var parameters = {
+            client: 'zonky-test',
+            clientIdentity: 'Zonky s.r.o',
+            country: 'cz',
+            locale: 'cz',
+            showTargetMissingOption: true,
+            showBetaQualityLabels: false,
+            showFavicons: false,
+            showScreenshots: true,
+            layout: true,
+            dynamicHeight: true,
+            target: null,
+            ownerExternalId: null,
+            styles: {},
+            divId: 'kontomatik',
+
+            onSuccess: function(target, sessionId, sessionIdSignature, options) {
+                var message = "success," + target + "," + sessionId + "," + sessionIdSignature
+                okHandler(message);
+            },
+            onError: function(exception, options) {
+                errorHandler(exception+"");
+            },
+            onUnsupportedTarget: function(target, country,  address) {
+                errorHandler("unsupportedTarget,"+target+","+country+","+address);
+            },
+            onInitialized: function() {
+                var iframe = document.getElementsByTagName('iframe')[0];
+                if (isPopup && isPopupPatched == false) {
+                    isPopupPatched = true;
+                    iframe.src = iframe.src.replace("isPopup=false","isPopup=true");
+                }
+                if (document.getElementById('footer') == null) {
                     var e = document.createElement('div');
                     e.id = 'footer';
-                    document.getElementById('kontomatik').appendChild(e);
-                    
-                    okHandler('initialized');
+                    document.getElementById('kontomatik').appendChild(e)
                 }
-            };
-            
-            function setParameters(binParams) {
-                try {
-                    var decoded = window.atob(binParams);
-                    var json = JSON.parse(decoded);
-                    if (json !== undefined) {
-                        for (key in json) {
-                            if (json.hasOwnProperty(key) && allowedParameters.indexOf(key) >= 0) {
-                                parameters[key] = json[key];
-                            } else {
-                                errorHandler("Ignoring not allowed parameter '"+key+"'");
-                            }
+                
+                okHandler('initialized');
+            }
+        };
+        
+        function setParameters(binParams) {
+            try {
+                var decoded = window.atob(binParams);
+                var json = JSON.parse(decoded);
+                if (json !== undefined) {
+                    for (key in json) {
+                        if (key == "isPopup") {
+                            isPopup = json[key];
+                        }
+                        else if (json.hasOwnProperty(key) && allowedParameters.indexOf(key) >= 0) {
+                            parameters[key] = json[key];
+                        } else {
+                            errorHandler("Ignoring not allowed parameter '"+key+"'");
                         }
                     }
-                    return true;
                 }
-                catch (e) {
-                    errorHandler(e+"");
-                    return false;
-                }
+                return true;
             }
-            
-            function start() {
-                embedKontomatik(parameters);
+            catch (e) {
+                errorHandler(e+"");
+                return false;
             }
-            </script>
-            </head>
-    <style type="text/css">
-        #kontomatik {
-            position: relative;
         }
-    
-        #footer {
-            width: 100%;
-            height: 11px;
-            background-color: #FFFFFF;
-            position: absolute;
-            bottom: 0;
+        
+        function start() {
+            embedKontomatik(parameters);
         }
-    </style>
-    <body>
-        <div id="kontomatik"></div>
-    </body></html>
+        </script>
+        </head>
+<style type="text/css">
+    #kontomatik {
+        position: relative;
+    }
+
+    #footer {
+        width: 100%;
+        height: 11px;
+        background-color: #FFFFFF;
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+<body>
+    <div id="kontomatik"></div>
+</body></html>
 

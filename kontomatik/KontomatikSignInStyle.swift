@@ -50,8 +50,6 @@ public struct KontomatikSignInStyle {
     let menuHighlightBgColor: UIColor?
     /// Controls the all texts color
     let textColor: UIColor?
-    /// Undocumented option. Hides the widget border
-    let isPopup: Bool?
     
     public func toDict() -> [String: Any] {
         var params: [String: Any] = [:]
@@ -74,7 +72,6 @@ public struct KontomatikSignInStyle {
         inputBorderFocusColor.map { params["inputBorderFocusColor"] = $0.hexValue()  }
         menuHighlightBgColor.map { params["menuHighlightBgColor"] = $0.hexValue()  }
         textColor.map { params["textColor"] = $0.hexValue()  }
-        isPopup.map { params["isPopup"] = $0 }
         return params
     }
 }
@@ -100,7 +97,6 @@ extension KontomatikSignInStyle {
         self.inputBorderFocusColor = inputBorderFocusColor
         self.menuHighlightBgColor = menuHighlightBgColor
         self.textColor = nil
-        self.isPopup = isPopup
     }
 }
 
